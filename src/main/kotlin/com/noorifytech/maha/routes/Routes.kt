@@ -9,7 +9,7 @@ import io.ktor.routing.route
 fun Route.checkout() {
     route("/") {
         get {
-            call.respond("Hello World")
+            call.respond("Maha e-commerce application is up and running...")
         }
     }
 }
