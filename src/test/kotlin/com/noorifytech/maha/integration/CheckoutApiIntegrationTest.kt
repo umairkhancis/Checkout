@@ -9,9 +9,7 @@ class CheckoutApiIntegrationTest : IntegrationTest() {
     fun checkoutApi() {
         get("/checkout")
                 .then()
-                .body("data.price", CoreMatchers.equalTo(0f))
-                .body("code", CoreMatchers.equalTo(200))
-                .body("msg", CoreMatchers.equalTo("OK"))
+                .body("price", CoreMatchers.equalTo(0f))
                 .statusCode(200)
     }
 }

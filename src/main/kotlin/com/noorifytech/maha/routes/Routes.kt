@@ -17,7 +17,7 @@ fun Route.checkout() {
 
     route("/checkout") {
         get {
-            call.respond(Response(data = Price(0f), msg = "OK", code = 200))
+            call.respond(Price(0f))
         }
     }
 }
