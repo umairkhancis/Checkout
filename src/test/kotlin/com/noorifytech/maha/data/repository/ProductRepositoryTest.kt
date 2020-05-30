@@ -15,7 +15,7 @@ class ProductRepositoryTest {
     }
 
     @Test
-    fun x() {
+    fun getProduct() {
         // Arrange
         val productId = "001"
 
