@@ -16,14 +16,28 @@ class CheckoutPriceCalculatorUseCase(
         val itemCountMap = itemCountMap(cart)
         val productDetailsMap = productDetailsMap(products)
 
+        val discountedProducts = products.filter { validDiscountConfig(it) }
+
         for (itemId in itemCountMap.keys) {
             val product = productDetailsMap[itemId]
-            val price = product?.unitPrice?.times(itemCountMap[itemId]?.toFloat() ?: 0f) ?: 0f
-            totalPrice += price
+            val itemCount = itemCountMap[itemId] ?: 0
+
+            product?.let {
+                totalPrice += if (product in discountedProducts && itemCount >= product.discountQty) {
+                    val discountedCount = itemCount / product.discountQty
+                    val nonDiscountedCount = itemCount % product.discountQty
+                    product.discountPrice.times(discountedCount) + product.unitPrice.times(nonDiscountedCount)
+                } else {
+                    product.unitPrice.times(itemCount.toFloat())
+                }
+            }
         }
 
         return totalPrice
     }
+
+    private fun validDiscountConfig(it: Product) =
+            it.discountPrice != it.unitPrice && it.discountQty > 1
 
     private fun itemCountMap(itemIds: List<String>): HashMap<String, Int> {
         val map = mutableMapOf<String, Int>()
