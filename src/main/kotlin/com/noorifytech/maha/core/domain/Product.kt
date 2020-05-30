@@ -4,6 +4,6 @@ data class Product(
         val id: String,
         val name: String,
         val unitPrice: Float,
-        val discountPrice: Float = 0f,
-        val discountQty: Int = 0
+        val discountPrice: Float = unitPrice,
+        val discountQty: Int = 1
 )
