@@ -1,5 +1,6 @@
 package com.noorifytech.maha.data.repository
 
+import com.noorifytech.maha.core.domain.Product
 import com.noorifytech.maha.data.repository.impl.ProductRepositoryImpl
 import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.BeforeEach
@@ -24,5 +25,17 @@ class ProductRepositoryTest {
 
         // Assert
         Assertions.assertThat(product.id).isEqualTo(productId)
+    }
+
+    @Test
+    fun getProducts() {
+        // Arrange
+        val productIds = listOf("001")
+
+        // Act
+        val products = productRepository.getProducts(productIds)
+
+        // Assert
+        Assertions.assertThat(products).isEqualTo(emptyList<Product>())
     }
 }
