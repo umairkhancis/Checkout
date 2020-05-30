@@ -1,6 +1,6 @@
 package com.noorifytech.maha.core.domain
 
-class Product(
+data class Product(
         val id: String,
         val name: String,
         val unitPrice: Float,
