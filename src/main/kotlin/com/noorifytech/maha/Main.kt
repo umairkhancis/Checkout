@@ -1,7 +1,9 @@
 package com.noorifytech.maha
 
 import com.fasterxml.jackson.databind.SerializationFeature
+import com.noorifytech.maha.data.dao.impl.db.impl.H2Database
 import com.noorifytech.maha.routes.checkout
+import com.noorifytech.maha.service.impl.CheckoutServiceImpl
 import io.ktor.application.Application
 import io.ktor.application.install
 import io.ktor.features.CallLogging
@@ -22,8 +24,10 @@ fun Application.module() {
         }
     }
 
+    H2Database.init()
+
     install(Routing) {
-        checkout()
+        checkout(CheckoutServiceImpl())
     }
 
 }
