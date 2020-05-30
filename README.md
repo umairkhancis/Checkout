@@ -20,7 +20,7 @@ POST /checkout
 ```
 *Response*: 
 
-`{ "price" : 200 }`
+`{ "price" : 360 }`
 
 ## Testing
 100% test coverage by **Unit Tests** for service layer, usecase layer, repository layer and 
