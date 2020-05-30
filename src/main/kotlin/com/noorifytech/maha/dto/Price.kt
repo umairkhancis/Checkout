@@ -1,3 +1,5 @@
 package com.noorifytech.maha.dto
 
-data class Price(val price: Float)
+import java.math.BigDecimal
+
+data class Price(val price: BigDecimal)
