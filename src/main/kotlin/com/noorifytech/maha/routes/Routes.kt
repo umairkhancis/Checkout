@@ -1,5 +1,7 @@
 package com.noorifytech.maha.routes
 
+import com.noorifytech.maha.dto.Price
+import com.noorifytech.maha.dto.Response
 import io.ktor.application.call
 import io.ktor.response.respond
 import io.ktor.routing.Route
@@ -10,6 +12,12 @@ fun Route.checkout() {
     route("/") {
         get {
             call.respond("Maha e-commerce application is up and running...")
+        }
+    }
+
+    route("/checkout") {
+        get {
+            call.respond(Response(data = Price(0f), msg = "OK", code = 200))
         }
     }
 }
